@@ -4,6 +4,7 @@ Pas obligé de tout appliquer dès le début : Soit rapide, vif, répond aux req
 * Au moins un Tag - Lui mettre un nom applique déjà le tag "Name" ! Suffisant si rien n'est demandé de plus!
 * Dans l'ASG (Auto Scaling Group) il faut bien préciser ce Tag sinon les EC2 déployés par l'ASG n'auront pas de nom, donc pas de tag, donc pas de point sur cette partie!
 * Créer tes propres AMI : USER DATA DOIT ETRE VIDE
+* ASG used and has target tracing policy and scale based on alb requests : Ton ASG devra très certainement se faire en fonction du nombre requêtes reçu par ton ALB!
   
 # S3
 * Activer le versionning! Ce n'est pas par défaut
@@ -63,3 +64,29 @@ aws cloudwatch put-metric-alarm \
 ## Fais ton dashboard
 En fin de journée, prends quelque metric, alarm etc, notamment ceux des ALB, et affiche les
 Tu t'en fou de ce que tu mets, juste met des infos qui paraissent utile pour montrer que tu as fais un dashboard
+
+## Encription en transit (in-flight/in-transit)
+L'activer autant que possible sur les services qui le propose...
+
+## Multi AZ
+Même si c'est pas dis ! Plusieurs subnets qui couvre plusieurs AZ! Minimum 3
+
+## ALB en frontal
+Appli web avec ec2 ? Un ALB devant! ALB publique, avec instance en subnet private!!!!  
+L'ALB publique a pour scope les subnets publique (pour ensuite joindre le subnet privé)!! 
+
+## Répondre aux requêtes
+Tu dois répondre au maximum de requête! Idéalement plus de 90%
+
+## DynamoDB/RDS
+Backup activé! Le backup régulier
+
+## Security group
+* LEAST PRIVILEGE 
+* identity based policy (IAM User, Groups ou **Role**) **ET** Resource based policy (KMS,secrets manager, S3...) autant que possible!  
+Si pas de Resource based policy alors fais avec les rôles
+
+## ECR 
+Repo ECR avec tagg immutable https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html
+## Fin de journée
+Ton app doit pouvoir scaler seul sans intervention humain! Ca sera testé en fin de journée
