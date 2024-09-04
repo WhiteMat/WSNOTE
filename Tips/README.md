@@ -18,3 +18,23 @@ pip install \
     --only-binary=:all: --upgrade \
     xx yy zz
 ```
+
+## AWS CLI
+Confirme ça avec du bash windows..Mais ca devrait être ok
+```bash
+# Avec quel permission tu es connecté
+aws sts get-caller-identity
+
+# Lister S3
+aws s3 ls
+# Copier un fichier local dans un bucket
+aws cp <localefile> s3://<bucket>/
+
+# Télécharger un fichier d'un bucket
+aws cp s3://<bucket/xxx.jpg <localpath>
+
+# Copier tout ton dossier actuel vers le bucket (optimisé, récursif, sync ne fait que la différence + suppression des anciens fichiers)
+aws s3 sync ./ s3://<bucket/ --delete
+# Télécharger tout le dossier s3 dans ton répertoire actuelle, récursif
+aws s3 sync s3://<bucket/ ./ --delete
+```
