@@ -4,7 +4,6 @@ Pas obligé de tout appliquer dès le début : Soit rapide, vif, répond aux req
 * Au moins un Tag - Lui mettre un nom applique déjà le tag "Name" ! Suffisant si rien n'est demandé de plus!
 * Dans l'ASG (Auto Scaling Group) il faut bien préciser ce Tag sinon les EC2 déployés par l'ASG n'auront pas de nom, donc pas de tag, donc pas de point sur cette partie!
 * Créer tes propres AMI : USER DATA DOIT ETRE VIDE
-
 # S3
 * Activer le versionning! Ce n'est pas par défaut
 * L'encryption doit rester activé afin de suivre les best pratices! Par défaut il est réglé sur SSE-S3 et est suffisant.
