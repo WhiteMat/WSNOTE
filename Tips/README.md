@@ -38,3 +38,36 @@ aws s3 sync ./ s3://<bucket/ --delete
 # Télécharger tout le dossier s3 dans ton répertoire actuelle, récursif
 aws s3 sync s3://<bucket/ ./ --delete
 ```
+
+#### Create service
+```bash
+sudo cp /path/to/appbin /usr/local/bin/
+sudo chmod +x /usr/local/bin/appbin
+nano /etc/systemd/system/appbin.service
+```
+Configre file : 
+```bash
+[Unit]
+Description=Your Binary Service
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/appbin  
+ExecReload=/bin/kill -HUP $MAINPID    
+Restart=unless-stopped                        
+#User=root                         
+
+[Install]
+WantedBy=multi-user.target
+```
+Adn then : 
+```bash
+sudo systemctl daemon-reload
+sudo systemctl start appbin.service
+sudo systemctl enable appbin.service
+```
+show logs during execution:
+```bash
+journalctl -u appbin.service
+```
+tips : check if there is a log file / help option (maybe redis or something like this to use)
