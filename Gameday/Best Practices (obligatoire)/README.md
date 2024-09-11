@@ -7,7 +7,7 @@ Pas obligé de tout appliquer dès le début : Soit rapide, vif, répond aux req
 # S3
 * Activer le versionning! Ce n'est pas par défaut
 * L'encryption doit rester activé afin de suivre les best pratices! Par défaut il est réglé sur SSE-S3 et est suffisant.
-
+* Lifecycle policy (inteligent tierijg devrzit suffir)
 # VPC
 * Activer VPC Flow Log - SUR CHAQUE VPC
 
@@ -85,6 +85,24 @@ Backup activé! Le backup régulier
 Si pas de Resource based policy alors fais avec les rôles
 
 ## ECR 
-Repo ECR avec tagg immutable https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html
+* Repo ECR avec tagg immutable https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html
+
+* Tag le repo ECR
+
+## DynamoDB
+* backup dynamo (si notion de 7j de retention, l'augmenter)
+* Si option de tag, alors tag!
+## RDS 
+* privilegie Aurorora SQL (si pas specifier pour SQL)
+* Augmenter retrntion policy (pas 7j, mais 14)
+## API Gateway
+* tag api gateway
+
+# Codecommit
+manual approval
+
+# SSM parameter store
+advanced tiering...
 ## Fin de journée
-Ton app doit pouvoir scaler seul sans intervention humain! Ca sera testé en fin de journée
+* Ton app doit pouvoir scaler seul sans intervention humain! Ca sera testé en fin de journée
+* **DE FACON GLOBALE : TU DOIS VERIFIER SI TU PEUW CONFIGURER DU SCALING, DE LA RETENTION POLICY DE BACKUP, DU LIFECYCLE, AJOUTER DU TAG, FAIRE DU VERSIONNING, ETC...! DDOUBLE CHECK SUR INTERNET **
