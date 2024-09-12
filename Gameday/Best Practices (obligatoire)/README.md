@@ -95,14 +95,19 @@ Si pas de Resource based policy alors fais avec les rôles
 ## RDS 
 * privilegie Aurorora SQL (si pas specifier pour SQL)
 * Augmenter retrntion policy (pas 7j, mais 14)
+* RDS Logs
 ## API Gateway
 * tag api gateway
 
-# Codecommit
+## Codecommit
 manual approval
 
-# SSM parameter store
+## SSM parameter store
 advanced tiering...
+
+## ALB 
+Activer ALB Access Logs
+
 ## Fin de journée
 * Ton app doit pouvoir scaler seul sans intervention humain! Ca sera testé en fin de journée
-* **DE FACON GLOBALE : TU DOIS VERIFIER SI TU PEUW CONFIGURER DU SCALING, DE LA RETENTION POLICY DE BACKUP, DU LIFECYCLE, AJOUTER DU TAG, FAIRE DU VERSIONNING, ETC...! DDOUBLE CHECK SUR INTERNET **
+* **DE FACON GLOBALE : TU DOIS VERIFIER SI TU PEUX CONFIGURER DU SCALING, DE LA RETENTION POLICY DE BACKUP, DU BACKUP, DU LIFECYCLE, AJOUTER DU TAG, FAIRE DU VERSIONNING, ETC...! DDOUBLE CHECK SUR INTERNET POUR CHAQUE SERVICE **
